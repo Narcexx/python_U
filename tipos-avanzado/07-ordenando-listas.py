@@ -13,4 +13,6 @@ def ordena(elemento):
     return elemento[1] # indice 1 para que ordene a partir de ese elemento
 
 usuarios.sort(key=ordena)
+usuarios.sort(key=lambda el:el[1]) #con la funcion lambda no es necesario crear la funcion ordena, pero esta funcion lambda solo se ocupa en este tipo de casos
+# Cuando solo vas a ocupar la funcion una sola vez, esto porque es una mala practica usar la funcion lambda muchas veces
 print(usuarios) 
