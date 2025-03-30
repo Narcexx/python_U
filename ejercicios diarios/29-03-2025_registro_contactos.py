@@ -25,8 +25,8 @@ def ver_contactos(lista_contactos):
 
 def buscar_contacto(lista_contactos):
     nombre_contacto = input("Ingrese el nombre a buscar: ").strip().lower().capitalize()
-    for contacto in lista_contactos:
-        if contacto[0] == nombre_contacto:
+    for contacto in lista_contactos: # Recorre cada tupla dentro de la lista
+        if contacto[0] == nombre_contacto: # Es el primer elemento de la tupla que en este caso es el nombre
             print(f"Contacto encontrado: {contacto[0]} - {contacto[1]}")
             return
     print("No se encontró el contacto.")
@@ -35,8 +35,8 @@ def buscar_contacto(lista_contactos):
 def eliminar_contacto(lista_contactos):
     ver_contactos(lista_contactos)
     nombre_contacto = input("Ingrese el nombre del contacto a eliminar: ").strip().lower().capitalize()
-    for contacto in lista_contactos:
-        if contacto[0] == nombre_contacto:
+    for contacto in lista_contactos: # Recorre cada tupla dentro de la lista
+        if contacto[0] == nombre_contacto: # Es el primer elemento de la tupla que en este caso es el nombre
             lista_contactos.remove(contacto)
             print(f"Contacto '{nombre_contacto}' eliminado.")
             return
