@@ -6,6 +6,7 @@ primer = {1, 1, 2, 2, 3, 4}
 # print(primer)
 segundo = [3, 4, 5]
 segundo = set(segundo)
+print(segundo)
 # Operaciones que se pueden hacer con sets
 print(primer | segundo) # hace una UNION
 print(primer & segundo) # hace una INTERSECCION
