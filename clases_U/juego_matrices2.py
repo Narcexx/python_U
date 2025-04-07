@@ -34,6 +34,12 @@ def mostrar(tabla):
 def ejecutar():
     tabla = crear_tablero()
     fila_mina, columna_mina = colocar_bomba()
+    intento = 1
+    celdas_correctas = 1
+    misma_coordenada_fila = []
+    misma_coordenada_columna = []
+    i = 0
+    j = 0
     while True:
         print("---- Tablero ----")
         mostrar(tabla)
@@ -47,5 +53,23 @@ def ejecutar():
         else:
             print("\nVas bien")
             tabla [posicion_fila][posicion_columna] = "o"
+            print("\nLleva {intento} intentos")
+            intento += 1
+            misma_coordenada_fila.append(posicion_fila)
+            misma_coordenada_columna.append(posicion_columna)
+
+            while i < 3:
+                if misma_coordenada_fila [i] == posicion_fila:
+                    while j < 3:
+                        if misma_coordenada_columna [j] == posicion_columna:
+                            print(f"\nCeldas correctas  que lleva: {celdas_correctas}")
+                            celdas_correctas += 1
+                            break
+                        j += 1
+                    j = 0
+                    i += 1
+                else:
+                    print("\n¡Ya ingreso esa coordenada!")
+                    break
 
 ejecutar()

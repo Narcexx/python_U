@@ -22,7 +22,7 @@ def coordenadas():
      while True:
         try:
             posicion = int(input("Ingrese una posicion (0, 1, 2): "))
-            if posicion >= 0:
+            if posicion >= 0 and posicion < 3:
                 return posicion
             else:
                 print("ERROR: Ingrese una posicion valida")
