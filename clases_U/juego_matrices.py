@@ -1,21 +1,10 @@
 import random
 
-def crear_tablero(fila1, fila2, fila3):
-    i = 0
-    while i < 3:
-        numero_random = random.randint(0, 2)
-        fila1 [i] = numero_random
-        i += 1
-    i = 0
-    while i < 3:
-        numero_random = random.randint(0, 2)
-        fila2 [i] = numero_random
-        i += 1
-    i = 0
-    while i < 3:
-        numero_random = random.randint(0, 2)
-        fila3 [i] = numero_random
-        i += 1
+def crear_tablero():
+     fila1 = ["*","*","*"]
+     fila2 = ["*","*","*"]
+     fila3 = ["*","*","*"]
+     return [fila1, fila2, fila3]
 
 
 def coordenadas():
@@ -30,26 +19,37 @@ def coordenadas():
             print("ERROR: Ingrese un numero")
 
 
-# def colocar_bomba():
- posicion_columna = int(input("Ingrese columna (0, 1, 2): "))
-            if posicion_columna >= 0:
-                posicion_fila = int(input("Ingrese fila (0, 1, 2): "))
-                if posicion_fila >= 0:
-                    posicion = int(input("Ingrese posicion (0, 1, 2): "))
-                    return posicion_columna, posicion_fila, posicion
+def colocar_bomba():
+    fila = random.randint(0, 2)
+    columna = random.randint(0, 2)
+    return fila, columna
+
+
+def mostrar(tabla):
+    print(tabla [0][0], tabla [0][1], tabla [0][2])
+    print(tabla [1][0], tabla [1][1], tabla [1][2])
+    print(tabla [2][0], tabla [2][1], tabla [2][2])
+
 
 def ejecutar():
-    fila1 = []
-    fila2 = []
-    fila3 = []
-    crear_tablero(fila1, fila2, fila3)
+    tabla = crear_tablero()
+    fila_bomba, columna_bomba = colocar_bomba()
     while True:
-        print("Ingrese coordenada fila:")
-        posicion = coordenadas()
-        if posicion == 0:
-             print("Ingrese coordenada columna:")
-             posicion = coordenadas()
-             if posicion == 0:
-                  
-             
-             
+        print("---- Tablero ----")
+        mostrar(tabla)
+        print("Ingrese coordenada de la fila: ")
+        posicion_fila = coordenadas()
+        print("Ingrese coordenada columna: ")
+        posicion_columna = coordenadas()
+        if tabla [posicion_fila][posicion_columna] == "o":
+            print("\n¡Ya ingresaste esa coordenada! Intenta con otra")
+            continue
+        if columna_bomba == posicion_columna and fila_bomba == posicion_fila:
+            print("\n¡Boom! Perdiste")
+            break
+        else:
+            print("\nVas bien")
+            tabla [posicion_fila][posicion_columna] = "o"
+    
+    
+ejecutar()
