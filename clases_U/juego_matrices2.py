@@ -4,7 +4,7 @@ def crear_tablero():
      fila1 = ["*","*","*"]
      fila2 = ["*","*","*"]
      fila3 = ["*","*","*"]
-     return [fila1, fila2, fila3]
+     return [fila1, fila2, fila3] # Al retornar asi devolveria una lista como esta [["*","*","*"],["*","*","*"],["*","*","*"]]
 
 # Funcion que le pide al usuario que de una posicion retornando esta, se ocupara para pedir posicion de fila y columna
 def coordenadas():
