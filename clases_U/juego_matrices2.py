@@ -71,7 +71,7 @@ def ejecutar():
             break
         # Si no entra a ninguno de los if significa que las coordnadas no habian sido usadas y tampoco estaba la bomba, entonces se sigue con lo siguiente
         tabla[posicion_fila][posicion_columna] = "o" # Pone una 'o' para marcar que se uso esa celda
-        fila_usada.append(posicion_fila) # Agrega la posicion de la fila ingresada al final de la lista, eso hace append()
+        fila_usada.append(posicion_fila) # Agrega la posicion de la fila ingresada al final de la lista, eso hace .append()
         columna_usada.append(posicion_columna) # Lo mismo de arriba pero con la columna
         print("\n¡Vas bien!")
         print(f"\nIntentos: {intento}")
