@@ -30,7 +30,7 @@ def mostrar(tabla):
     print(tabla [1][0], tabla [1][1], tabla [1][2])
     print(tabla [2][0], tabla [2][1], tabla [2][2])
 
-# Funcion que verifica si una coordenada fue usada
+# Funcion que verifica si una coordenada fue usada, recibe como parametros las coordenadas que da el jugador y las listas que estan guardas las coordenadas ya ingresadas
 def verificar_coordenada_repetida(posicion_fila, posicion_columna, fila_usada, columna_usada):
     i = 0
     # Entra al bucle mientras i sea menor al tamaño de la lista fila_usada (igual se podia ocupar columna_usada)
@@ -59,7 +59,7 @@ def ejecutar():
         posicion_fila = coordenadas()
         print("Ingrese coordenada de la columna:")
         posicion_columna = coordenadas()
-        # Este if invocara la funcion y si retorna True entrara, imprimira y despues ejecuta el continue que corta el bucle ahi y lo empieza otra vez, diferente al break que termina el bucle
+        # Este if invocara la funcion se le pasan los argumentos y si retorna True entrara, imprimira y despues ejecuta el continue que corta el bucle ahi y lo empieza otra vez, diferente al break que termina el bucle
         if verificar_coordenada_repetida(posicion_fila, posicion_columna, fila_usada, columna_usada):
             print("\n¡Ya ingresaste esa coordenada! Intenta con otra")
             continue
