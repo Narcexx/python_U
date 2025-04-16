@@ -26,7 +26,7 @@ def mostrar_matriz(fila, columna, matriz):
 #         for valor in fila: # Aca recorrera la fila [3, 2, 3]
 #             print(valor, end=' ') # Mostrara los valores de la fila en una linea
 #         print()
-        # Terminado el for pasara al siguiente fila que es [6, 1, 2] y ahara lo mismo
+        # Terminado el for pasara al siguiente fila que es [6, 1, 2] y hara lo mismo
 
 
 # Funcion para mostrar la matriz transpuesta, recibe como parametros las fila, columna que tiene y la matriz
