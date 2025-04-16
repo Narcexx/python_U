@@ -35,7 +35,7 @@ def validacion_dato(dato):
             else:
                 print("Tiene que ser mayo que 0")
         except ValueError:
-            print("INGRESE UN NUMERO")
+            print("INGRESE UN NUMERO VALIDO")
 
 
 def ejecutar():
