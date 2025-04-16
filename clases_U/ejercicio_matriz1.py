@@ -25,22 +25,23 @@ def suma_matriz(fila, columna, matriz1, matriz2):
         # Despues se creara otra fila si es que el usuario puso mas de una y hara el mismo procedimiento
     return matriz3 # Al finalizar los for, retornara la matriz 3
 
-
-def ejecutar():
-    while True: # Todo esto es para validar que se ingrese un numero y no una letra, asi el programa no se detendra si se coloca una letra
-        try:
-            fila = int(input("Cuantas fila tendra la matriz: ")) # Se le pide al usuario la cantidad de filas que tendra la matriz
-            break  # Sale del bucle si se ingresó un número válido
-        except ValueError:
-            print("INGRESE UN NUMERO")
-
+# Funcion para validar que se ingrese un numero que sea mayor que 0 y que no sea una letra, asi el programa no se detendra si se coloca 0, numero negativo o letra
+def validacion_dato(dato):
     while True:
         try:
-            columna = int(input("Cuantas columnas tendra la matriz: ")) # Se le pide al usuario la cantidad de columnas que tendra la matriz
-            break
+            numero = int(input(dato))
+            if numero > 0:
+                return numero # Retorna el numero si se ingreso un numero valido
+            else:
+                print("Tiene que ser mayo que 0")
         except ValueError:
             print("INGRESE UN NUMERO")
 
+
+def ejecutar():
+    fila = validacion_dato("Cuantas fila tendra la matriz: ") # Se invoca a la funcion validacion_dato(), y se le entrega como argumento en este caso una cadena de texto
+    columna = validacion_dato("Cuantas columnas tendra la matriz: ") # Se invoca a la funcion validacion_dato(), y se le entrega como argumento en este caso una cadena de texto
+    
     matriz1 = crear_matriz(fila, columna) # Se invoca a la funcion crear_matriz() para crear la primera matriz y se les pasa los argumentos de fila y columna
     matriz2 = crear_matriz(fila, columna) # Se invoca a la funcion crear_matriz() para crear la segunda matriz y se les pasa los argumentos de fila y columna
     # En este codigo las 2 matrices seran del mismo tamaño
