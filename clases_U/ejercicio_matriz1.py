@@ -52,9 +52,10 @@ def ejecutar():
 
 ejecutar()
 
-# def crear_matriz2():
-#     fila = int((input("Cuantas fila tendra la matriz: ")))
-#     columna = int(input("Cuantas columnas tendra la matriz: "))
-#     matriz = []
+# Otra forma de hacerlo, mas compacta, pero igual mas complicada
+# def crear_matriz2(fila, columna):
 #     return [[random.randint(0,4) for j in range(columna)]for i in range(fila)]
-# print(crear_matriz2())
+    # Hay que verlo asi para entenderlo que esta asi [[for j]for i] en el for j crea una lista con la cantidad de columnas que puso el usuario, llenandola con numeros
+    # El for i repite el proceso de crear una fila tantas veces como lo indico el usuario
+    # Resumen el for j llena una fila con numeros, y el for i hace varias de esas filas
+# print(crear_matriz2(fila, columna))
