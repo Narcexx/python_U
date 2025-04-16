@@ -8,7 +8,7 @@ def crear_matriz(fila, columna):
         for j in range(columna): # Este for ira pasando por las columnas, el for terminara cuando se llegue al numero de columnas que dio el usuario
             valor = random.randint(3,6)  # Se crea una variable que guarde numeros randoms entre el 3 y 6
             fila.append(valor) # Aqui con el metodo .append() agregara el valor a la lista fila, lo que hace append es agregar un elemento al final de la lista
-        matriz.append(fila) # Cuando termine el for de las columnas, significa que se le agrego un valor a todas las columnas de esa fila
+        matriz.append(fila) # Cuando termine el for de las columnas, significa que se le agrego un valor a todas las columnas de esa fila, entonces se agrega la lista fila a la matriz
         # Despues se creara otra fila si es que el usuario puso mas de una y hara el mismo procedimiento
     return matriz # Al finalizar los for, retornara la matriz creada
 
@@ -21,7 +21,7 @@ def suma_matriz(fila, columna, matriz1, matriz2):
         for j in range(columna): # Este for ira pasando por las columnas y sumando, el for terminara cuando se llegue al numero de columnas que dio el usuario
             resultado = matriz1[i][j] + matriz2[i][j] # Se crea una variable que guarde el resultado de esa coordenada
             fila.append(resultado) # Aqui con el metodo .append() agregara el resultado a la lista fila
-        matriz3.append(fila) # Cuando termine el for de las columnas, significa que se hicieron todas las sumas de esa fila, entonces se agrega la lista fila a la matriz 3 con append
+        matriz3.append(fila) # Cuando termine el for de las columnas, significa que se hicieron todas las sumas de esa fila, entonces se agrega la lista fila a la matriz 3
         # Despues se creara otra fila si es que el usuario puso mas de una y hara el mismo procedimiento
     return matriz3 # Al finalizar los for, retornara la matriz 3
 
