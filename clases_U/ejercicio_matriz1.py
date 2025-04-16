@@ -1,3 +1,4 @@
+# Escribe una función que tome una matriz cuadrada como entrada y muestre la suma de todos sus elementos.
 import random
 
 # Funcion que crea la matriz

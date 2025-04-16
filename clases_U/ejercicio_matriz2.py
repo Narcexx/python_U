@@ -1,3 +1,4 @@
+# Crea una función que tome dos matrices como entrada y muestre la matriz resultante de su suma.
 import random
 
 # Funcion que crea la matriz, recibe como parametros las filas y columnas que tendra la matriz
