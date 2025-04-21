@@ -17,7 +17,7 @@ def crear_matriz():
 # Funcion que sumara los datos de la matriz, recibe como parametro la matriz
 def suma_matriz(matriz):
     resultado = 0
-    for i in range(3): # Este for es para ir creando las filas, el for terminara cuando se llegue al numero de filas establecida
+    for i in range(3): # Este for es para ir pasando por las filas, el for terminara cuando se llegue al numero de filas establecida
         for j in range(3): # Este for ira pasando por las columnas y sumando, el for terminara cuando se llegue al numero de columnas establecida
             resultado +=  matriz[i][j] # Va a ir sumando los valores hasta que recorra toda la fila
             
