@@ -69,43 +69,107 @@ def revisar_ganador(matriz):
     
     return False
 
-# Funcion para el movimiento de la maquina
+# Funcion para el movimiento de la maquina full random
+# def movimiento_pc(matriz):
+#     while True:
+#         fila = random.randint(0, 2)
+#         columna = random.randint(0, 2)
+#         if(matriz[fila][columna] == " "): # Si no hay nada va a poner el simbolo en la posicion
+#             matriz[fila][columna]="X"
+#             break
+#         else: # Si estaba con algo esa posicion, va pasar a al continue que repetira el bucle y se creara otra posicion para comparar
+#             continue
+
+# Funcion para el movimiento de la maquina pero mas inteligente
 def movimiento_pc(matriz):
+    # Este for es va a verificar que si con este movimiento gana o no
+    for i in range(3):
+        for j in range(3):
+            if matriz[i][j] == " ":
+                matriz[i][j] = "X"  # Simula que pone su ficha
+                if revisar_ganador(matriz): # Si gana con este movimiento lo retornara
+                    return
+                matriz[i][j] = " "  # Si no gana vuelve a colocar el string vacio
+    # Este for se ejecutara si el for de arriba no retorno, este es para ver si bloquea la jugada ganadora del jugador
+    for i in range(3):
+        for j in range(3):
+            if matriz[i][j] == " ":
+                matriz[i][j] = "O"  # Simula que el jugador pone su ficha
+                if revisar_ganador(matriz): # Si gana con ese movimiento el jugador lo va a bloquear
+                    matriz[i][j] = "X"  # Bloquea
+                    return
+                matriz[i][j] = " "  # # Si no gana el jugador vuelve a colocar el string vacio
+    # Si no puede ganar ni bloquear va hacer un movimiento full random
     while True:
         fila = random.randint(0, 2)
         columna = random.randint(0, 2)
-        if(matriz[fila][columna]==" "):
-            matriz[fila][columna]="O"
+        if matriz[fila][columna] == " ":
+            matriz[fila][columna] = "X"
             break
-        else:
-            continue
         
+# ESTE ES PARA JUGAR CON OTRA PERSONA
+# def ejecutar():
+#     matriz = crear_matriz() # Se invoca a la funcion crear_matriz() para crear una matriz 3x3
+#     mostrar_matriz(matriz)
+#     turno = 1
+#     while turno <= 9:
+#         # Este bloque if-elif es para identificar saber que jugador le toca en cada turno, turno impar = jugador 1, turno par = jugador 2
+#         if turno % 2 == 1:
+#             jugador = 1
+#         elif turno % 2 == 0:
+#             jugador = 2
+#         # while para ver si la posicion esta ocupada o no
+#         while True:
+#             print(f"Jugador {jugador}", end= ' ')
+#             fila = validacion_dato("Elige fila (1, 2, 3): ")
+#             columna = validacion_dato("Elige columna (1, 2, 3): ")
+#             if movimiento_jugador(fila, columna, matriz, jugador): # Si no estaba ocupada la posicion retornara True y se ejecutara el break
+#                 break
 
+#         mostrar_matriz(matriz)
+        # Invoca la funcion revisar_ganador(), se le pasa como argumento la matriz
+#         if revisar_ganador(matriz):
+#             print(f"Jugador {jugador} GANO!")
+#             break
+        # Si despues de el turno del jugador no encuentra ganador suma 1 a la variable turno
+        # turno += 1
+        # if turno == 10:
+        #     print("EMPATE!")
+
+# ESTE ES PARA JUGAR CON LA MAQUINA
 def ejecutar():
-    matriz = crear_matriz() # Se invoca a la funcion crear_matriz() para crear una matriz 3x3
+    matriz = crear_matriz()
     mostrar_matriz(matriz)
     turno = 1
-    while turno < 10:
-        # Este bloque if-elif es para identificar saber que jugador le toca en cada turno, turno impar = jugador 1, turno par = jugador 2
-        if turno % 2 == 1:
-            jugador = 1
-        elif turno % 2 == 0:
-            jugador = 2
+    while turno <= 9:
+        # Turno jugador
         # while para ver si la posicion esta ocupada o no
         while True:
-            print(f"Jugador {jugador}", end= ' ')
+            print(f"Jugador 1", end=' ')
             fila = validacion_dato("Elige fila (1, 2, 3): ")
             columna = validacion_dato("Elige columna (1, 2, 3): ")
-
-            if movimiento_jugador(fila, columna, matriz, jugador): # Si no estaba ocupada la posicion retornara True y se ejecutara el break
-                break 
-            
-        mostrar_matriz(matriz)
+            if movimiento_jugador(fila, columna, matriz, 1): # Si no estaba ocupada la posicion retornara True y se ejecutara el break
+                break
+        mostrar_matriz(matriz) # Se muestra la matriz con el movimiento del jugador
+        # Invoca la funcion revisar_ganador(), se le pasa como argumento la matriz
         if revisar_ganador(matriz):
-            print(f"Jugador {jugador} GANO!")
+            print("Jugador 1 GANO!")
             break
+        # Si despues de el turno del jugador no encuentra ganador suma 1 a la variable turno
+        turno += 1 
+        if turno > 9: # Si turno es igual a 10 significa que se usaron todas las posiciones, entonces es empate
+            print("¡EMPATE!")
+            break
+
+        # Turno pc
+        print("TURNO PC\n")
+        movimiento_pc(matriz) # Invoca a la funcion movimiento pc que se le pasa como argumento la matriz
+        mostrar_matriz(matriz) # Se muestra la matriz con el movimiento del PC
+        # Invoca la funcion revisar_ganador(), se le pasa como argumento la matriz
+        if revisar_ganador(matriz):
+            print("EL PC GANO!")
+            break
+        # Si despues de el turno del PC no encuentra ganador suma 1 a la variable turno
         turno += 1
-        if turno == 10:
-            print("EMPATE!")
     
 ejecutar()
