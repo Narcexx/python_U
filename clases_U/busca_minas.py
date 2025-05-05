@@ -14,6 +14,7 @@ def crear_matriz():
 
 # Funcion para mostrar la matriz, recibe como parametro la matriz
 def mostrar_matriz(matriz):
+    print("\n1   2   3   4")
     for i in range(4):
         for j in range(4):
             if j == 3:
@@ -25,6 +26,21 @@ def mostrar_matriz(matriz):
             print()
         else: 
             print("--|---|---|--") # Imprime esto abajo de cada fila menos de la ultima
+
+# Funcion para mostrar la matriz cuando se pierde con todas las posiciones de las bombas y demas
+def mostrar_matriz_oculta(matriz, bombas):
+    # Completar la matriz con bombas y numeros faltantes
+    for i in range(4):
+        for j in range(4):
+            if matriz[i][j] == " ":
+                if [i, j] in bombas:
+                    matriz[i][j] = "B"
+                else:
+                    cantidad = contar_bombas_alrededor(i, j, bombas)
+                    matriz[i][j] = str(cantidad)
+    
+    # Deespues que se lleno la matriz se invoca a la funcion mostrar_matriz() para que muestre la matriz
+    mostrar_matriz(matriz)
 
 # Funcion para validar que se ingrese un numero que sea mayor que 0, menor que 5 y que no sea una letra, asi el programa no se detendra si se coloca 0, numero negativo o letra
 def validacion_dato(dato):
@@ -53,10 +69,10 @@ def posicion_bomba():
 # Funcion que cuenta cuantas bombas hay alrededor de una posicion
 def contar_bombas_alrededor(fila, columna, bombas):
     contador = 0
-    # fors que revisa todas las posiciones alrededor
-    for i in range(fila - 1, fila + 2):  # Mira la fila anterior y siguiente ejem si fila = 2 entonces esto seria range(1, 3) que va desde el 1 hasta el 3
-        for j in range(columna - 1, columna + 2):  # Mira la columna anterior y siguiente ejem si columna = 2 entonces esto seria range(1, 3)
-            if [i, j] in bombas and [i, j] != [fila, columna]: # Este if es ver si [i, j] tiene una bomba y que no sea la misma posicion del jugador
+    # fors que revisa todas las 8 posiciones alrededor
+    for i in range(fila - 1, fila + 2):  # Mira la fila anterior y siguiente ejem si fila = 2 entonces esto seria range(1, 4) que va desde el 1 hasta el 3
+        for j in range(columna - 1, columna + 2):  # Mira la columna anterior y siguiente ejem si columna = 2 entonces esto seria range(1, 4)
+            if [i, j] in bombas and [i, j] != [fila, columna]: # Este if es para ver si [i, j] tiene una bomba y que no sea la misma posicion del jugador
                 if i >= 0 and i < 4 and j >= 0 and j < 4: # Este if es para verificar que la posicion esta dentro de la matriz 4x4
                     contador += 1  # Sumamos 1 al contador
     return contador  # Retornamos el numero de bombas que hay alrededor
@@ -88,7 +104,7 @@ def ejecutar():
         resultado = movimiento_jugador(fila, columna, matriz, bombas) # Se invoca a la movimiento_jugador() que revisa si el jugador descubrio una bomba o una posicion
         if resultado == "bomba": # Si es una bomba se muestra la bomba y se termina el juego
             print("BOOM! Pisaste una bomba!")
-            mostrar_matriz(matriz)
+            mostrar_matriz_oculta(matriz, bombas)
             break
         elif resultado == True: #  Si retorna True se suma 1 a las posiciones descubiertas
             descubiertas += 1
