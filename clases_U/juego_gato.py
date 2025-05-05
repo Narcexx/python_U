@@ -35,7 +35,7 @@ def validacion_dato(dato):
             if numero > 0 and numero < 4:
                 return numero # Retorna el numero si se ingreso un numero valido
             else:
-                print("Tiene que ser mayor que 0 o menor a 4")
+                print("Tiene que ser mayor que 0 y menor a 4")
         except ValueError:
             print("INGRESE UN NUMERO VALIDO")
 
