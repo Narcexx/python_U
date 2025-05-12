@@ -85,9 +85,9 @@ def ejecutar():
     tablero = crear_matriz()
     jugador_tablero = tablero_no_tesoros()
     tesoros_posiciones(tablero)
-    intentos = 0
+    intentos = 15
 
-    while encontrados < 3 and intentos < 10:
+    while encontrados < 3 and intentos > 0:
         mostrar_tablero(jugador_tablero)
 
         fila = validacion_dato("Ingrese fila (0-7): ")
@@ -105,13 +105,14 @@ def ejecutar():
             print("Nada por aquí...")
             jugador_tablero[fila][columna] = " X "
 
-        # Mostrar cuántos tesoros quedan
+        # Mostrar cuantos tesoros quedan
         print("Tesoros restantes:", 3 - encontrados)
 
         # Mostrar pistas
         tesoros_fila, tesoros_columna = pista_tesoros(tablero, jugador_tablero, fila, columna)
         print(f"Pista: hay {tesoros_fila} tesoro(s) en la misma fila y {tesoros_columna} en la misma columna")
-        intentos += 1
+        intentos -= 1
+        print(f"Te quedan {intentos} intentos")
 
     if encontrados == 3:
         print("\n¡Has encontrado todos los tesoros!")
